@@ -1,0 +1,22 @@
+[gd_scene load_steps=5 format=3 uid="uid://b5qkoi7gjs70l"]
+
+[ext_resource type="Script" path="res://photon_actor.gd" id="1_h558g"]
+[ext_resource type="Script" path="res://particle_area_actor.gd" id="2_1w5la"]
+
+[sub_resource type="SphereMesh" id="SphereMesh_xl0a2"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_p1nwh"]
+
+[node name="Photon" type="Node3D" groups=["fermion"]]
+script = ExtResource("1_h558g")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource("SphereMesh_xl0a2")
+
+[node name="Area3D" type="Area3D" parent="."]
+script = ExtResource("2_1w5la")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
+shape = SubResource("SphereShape3D_p1nwh")
+
+[connection signal="area_entered" from="Area3D" to="." method="_on_area_3d_area_entered" flags=18]

@@ -1,0 +1,21 @@
+[gd_scene load_steps=2 format=3 uid="uid://b8e6fbako0ul7"]
+
+[ext_resource type="PackedScene" uid="uid://b5qkoi7gjs70l" path="res://photon.tscn" id="1_4a8bf"]
+
+[node name="test_scence" type="Node3D"]
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 25)
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="Camera3D"]
+light_energy = 2.0
+light_indirect_energy = 2.0
+light_bake_mode = 1
+
+[node name="Photon" parent="." instance=ExtResource("1_4a8bf")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, 0)
+particle_velocity = Vector3(-1, 0, 0)
+
+[node name="Photon2" parent="." instance=ExtResource("1_4a8bf")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0, 0)
+particle_velocity = Vector3(1, 0, 0)

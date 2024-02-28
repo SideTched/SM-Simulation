@@ -1,0 +1,27 @@
+[gd_scene load_steps=6 format=3 uid="uid://do6iiwetdyj13"]
+
+[ext_resource type="Script" path="res://fermion_actor.gd" id="1_p4fm5"]
+[ext_resource type="Script" path="res://particle_area_actor.gd" id="2_hogbg"]
+[ext_resource type="PackedScene" uid="uid://b5qkoi7gjs70l" path="res://photon.tscn" id="2_kecod"]
+
+[sub_resource type="SphereMesh" id="SphereMesh_xl0a2"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_p1nwh"]
+
+[node name="Electron" type="Node3D" groups=["fermion"]]
+script = ExtResource("1_p4fm5")
+rest_mass = 0.511
+charge = -3.0
+spin_intervals = 1
+photon = ExtResource("2_kecod")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource("SphereMesh_xl0a2")
+
+[node name="Area3D" type="Area3D" parent="."]
+script = ExtResource("2_hogbg")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
+shape = SubResource("SphereShape3D_p1nwh")
+
+[connection signal="area_entered" from="Area3D" to="." method="_on_area_3d_area_entered"]

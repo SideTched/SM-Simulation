@@ -1,0 +1,27 @@
+[gd_scene load_steps=6 format=3 uid="uid://b0ms4jffkbujs"]
+
+[ext_resource type="Script" path="res://fermion_actor.gd" id="1_5qsah"]
+[ext_resource type="PackedScene" uid="uid://b5qkoi7gjs70l" path="res://photon.tscn" id="2_tnsjl"]
+[ext_resource type="Script" path="res://particle_area_actor.gd" id="3_e7xkj"]
+
+[sub_resource type="SphereMesh" id="SphereMesh_xl0a2"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_p1nwh"]
+
+[node name="Up Quark" type="Node3D" groups=["fermion"]]
+script = ExtResource("1_5qsah")
+rest_mass = 2.2
+charge = 2.0
+spin_intervals = 1
+photon = ExtResource("2_tnsjl")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource("SphereMesh_xl0a2")
+
+[node name="Area3D" type="Area3D" parent="."]
+script = ExtResource("3_e7xkj")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
+shape = SubResource("SphereShape3D_p1nwh")
+
+[connection signal="area_entered" from="Area3D" to="." method="_on_area_3d_area_entered" flags=18]

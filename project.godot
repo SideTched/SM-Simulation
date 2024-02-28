@@ -11,5 +11,15 @@ config_version=5
 [application]
 
 config/name="SM-Simulation"
+<<<<<<< Updated upstream
 config/features=PackedStringArray("4.0", "Forward Plus")
 config/icon="res://icon.svg"
+=======
+run/main_scene="res://test_scence.tscn"
+config/features=PackedStringArray("4.0", "Forward Plus")
+config/icon="res://icon.svg"
+
+[editor]
+
+movie_writer/fps=5
+>>>>>>> Stashed changes
